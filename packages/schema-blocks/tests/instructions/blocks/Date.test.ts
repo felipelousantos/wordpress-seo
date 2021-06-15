@@ -38,7 +38,7 @@ describe( "The Date instruction", () => {
 		};
 
 		const tree = renderer
-			.create( dateInstruction.edit( props ) )
+			.create( dateInstruction.edit( props, null, 0 ) )
 			.toJSON();
 
 		expect( tree ).toMatchSnapshot();

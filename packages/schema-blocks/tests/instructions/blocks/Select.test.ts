@@ -72,7 +72,7 @@ describe( "The Select instruction", () => {
 			const selectInstruction = new Select( 123, options );
 
 			const tree = renderer
-				.create( selectInstruction.edit( props ) as any )
+				.create( selectInstruction.edit( props, null, 0 ) as any )
 				.toJSON();
 
 			expect( tree ).toMatchSnapshot();
