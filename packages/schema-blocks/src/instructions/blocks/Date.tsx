@@ -9,6 +9,7 @@ import { useCallback } from "react";
 import { BlockValidationResult } from "../..";
 import { getPresence } from "../../functions/validators/getPresence";
 import { BlockPresence, BlockValidation } from "../../core/validation";
+import { BlockLeaf } from "../../core/blocks";
 
 /**
  * Adds a date picker to the schema block.
@@ -22,11 +23,13 @@ export default class Date extends BlockInstruction {
 	/**
 	 * The React components to show in the editor when editing this block.
 	 *
-	 * @param props The props.
+	 * @param props The block's properties.
+	 * @param leaf  The leaf being rendered.
+	 * @param index The number the rendered element is of its parent.
 	 *
 	 * @return The React components to show in the editor when editing this block.
 	 */
-	edit( props: RenderEditProps ): JSX.Element {
+	edit( props: RenderEditProps, leaf: BlockLeaf, index: string|number ): JSX.Element {
 		const { attributes, setAttributes } = props;
 
 		const dateFormat = Date.getDateFormat();
@@ -85,7 +88,7 @@ export default class Date extends BlockInstruction {
 		}, [ selectedDate, setDate ] );
 
 		return <Dropdown
-			key={ props.key }
+			key={ index }
 			className="yoast-block-date-picker-container"
 			position="bottom center"
 			renderToggle={ renderToggle }

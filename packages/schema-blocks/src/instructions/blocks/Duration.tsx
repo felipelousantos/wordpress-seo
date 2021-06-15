@@ -6,6 +6,7 @@ import moment from "moment";
 import { ReactElement, createElement, useCallback } from "react";
 import BlockInstruction from "../../core/blocks/BlockInstruction";
 import { RenderEditProps, RenderSaveProps } from "../../core/blocks/BlockDefinition";
+import { BlockLeaf } from "../../core/blocks";
 
 /**
  * Duration instruction.
@@ -40,10 +41,12 @@ export default class Duration extends BlockInstruction {
 	 * Renders editing the element.
 	 *
 	 * @param props The props.
+	 * @param leaf  The leaf being rendered.
+	 * @param index The number the rendered element is of its parent.
 	 *
 	 * @returns {JSX.Element} The element to render.
 	 */
-	edit( props: RenderEditProps ): ReactElement | string {
+	edit( props: RenderEditProps, leaf: BlockLeaf, index: number ): ReactElement | string {
 		const onChange = useCallback(
 			( value = 0 ) => {
 				props.setAttributes( {
@@ -56,7 +59,7 @@ export default class Duration extends BlockInstruction {
 
 		return (
 			<div
-				key={ props.key }
+				key={ index }
 				className="yoast-schema-flex yoast-schema-duration"
 			>
 				<TextControl

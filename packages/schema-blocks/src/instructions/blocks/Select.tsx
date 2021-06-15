@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { createElement, useCallback } from "@wordpress/element";
 import { BlockInstance } from "@wordpress/blocks";
 import { SelectControl } from "@wordpress/components";
-import { BlockInstruction } from "../../core/blocks/";
+import { BlockInstruction, BlockLeaf } from "../../core/blocks/";
 import { RenderEditProps, RenderSaveProps } from "../../core/blocks/BlockDefinition";
 import { BlockValidationResult } from "../../core/validation";
 import { defaultValidate } from "../../functions/validators/defaultValidate";
@@ -104,10 +104,12 @@ export default class Select extends BlockInstruction {
 	 * Renders editing the element.
 	 *
 	 * @param props The props.
+	 * @param leaf  The leaf being rendered.
+	 * @param index The number the rendered element is of its parent.
 	 *
 	 * @returns {JSX.Element} The element to render.
 	 */
-	edit( props: RenderEditProps ): ReactElement | string {
+	edit( props: RenderEditProps, leaf: BlockLeaf, index: number ): ReactElement | string {
 		const { label, options, hideLabelFromVision, className, defaultValue } = this.options;
 
 		const value = props.attributes[ this.options.name ] as string;
@@ -129,7 +131,7 @@ export default class Select extends BlockInstruction {
 		);
 
 		return <SelectControl
-			key={ props.key }
+			key={ index }
 			className={ [ className, "yoast-schema-select" ].join( " " ) }
 			label={ label }
 			value={ value }

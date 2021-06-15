@@ -56,12 +56,12 @@ export class Heading extends RichTextBase {
 	 *
 	 * @param props The render props.
 	 * @param leaf  The leaf being rendered.
-	 * @param i     The number child this is.
+	 * @param index The number child this is.
 	 *
 	 * @returns The RichText element.
 	 */
-	edit( props: RenderEditProps, leaf: BlockLeaf, i: number ): JSX.Element {
-		const attributes = this.getBaseAttributes( props, i ) as RichTextEditProps;
+	edit( props: RenderEditProps, leaf: BlockLeaf, index: number ): JSX.Element {
+		const attributes = this.getBaseAttributes( props, index ) as RichTextEditProps;
 
 		attributes.onChange = ( value ) => props.setAttributes( { [ this.options.name ]: value } );
 		if ( this.options.placeholder ) {
@@ -79,7 +79,7 @@ export class Heading extends RichTextBase {
 			props.setAttributes( { [ this.options.name + "_level" ]: newLevel } );
 		}, [ headingLevel ] );
 
-		return <Fragment key={ props.key }>
+		return <Fragment key={ index }>
 			<BlockControls>
 				<HeadingLevelDropdown
 					selectedLevel={ headingLevel }

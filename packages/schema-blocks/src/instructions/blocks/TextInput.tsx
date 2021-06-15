@@ -4,6 +4,7 @@ import { createElement } from "@wordpress/element";
 import { BlockConfiguration } from "@wordpress/blocks";
 import BlockInstruction from "../../core/blocks/BlockInstruction";
 import { RenderEditProps, RenderSaveProps } from "../../core/blocks/BlockDefinition";
+import { BlockLeaf } from "../../core/blocks";
 
 /**
  * The text input instruction.
@@ -21,10 +22,12 @@ export default class TextInput extends BlockInstruction {
 	 * Renders editing the instruction.
 	 *
 	 * @param props The props.
+	 * @param leaf  The leaf being rendered.
+	 * @param index The number the rendered element is of its parent.
 	 *
 	 * @returns The rendered instruction.
 	 */
-	edit( props: RenderEditProps ): React.ReactElement | string {
+	edit( props: RenderEditProps, leaf: BlockLeaf, index: number ): React.ReactElement | string {
 		const { hideLabelFromVision, label, type, placeholder } = this.options;
 
 		const value = props.attributes[ this.options.name ] as string;
@@ -37,7 +40,7 @@ export default class TextInput extends BlockInstruction {
 		);
 
 		return <TextControl
-			key={ props.key }
+			key={ index }
 			className={ props.className }
 			hideLabelFromVision={ hideLabelFromVision }
 			label={ label }
