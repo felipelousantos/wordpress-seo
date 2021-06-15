@@ -37,6 +37,7 @@ export default class TextInput extends BlockInstruction {
 		);
 
 		return <TextControl
+			key={ props.key }
 			className={ props.className }
 			hideLabelFromVision={ hideLabelFromVision }
 			label={ label }

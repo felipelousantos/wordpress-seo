@@ -19,6 +19,7 @@ import logger from "../../functions/logger";
 import { openGeneralSidebar } from "../../functions/gutenberg/sidebar";
 
 export interface RenderEditProps extends BlockEditProps<Record<string, unknown>> {
+	key?: string|number;
 	clientId: string;
 	name?: string;
 }

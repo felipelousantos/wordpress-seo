@@ -129,6 +129,7 @@ export default class Select extends BlockInstruction {
 		);
 
 		return <SelectControl
+			key={ props.key }
 			className={ [ className, "yoast-schema-select" ].join( " " ) }
 			label={ label }
 			value={ value }

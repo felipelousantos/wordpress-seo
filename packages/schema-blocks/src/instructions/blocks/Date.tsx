@@ -22,7 +22,7 @@ export default class Date extends BlockInstruction {
 	/**
 	 * The React components to show in the editor when editing this block.
 	 *
-	 * @param props The block's properties.
+	 * @param props The props.
 	 *
 	 * @return The React components to show in the editor when editing this block.
 	 */
@@ -85,6 +85,7 @@ export default class Date extends BlockInstruction {
 		}, [ selectedDate, setDate ] );
 
 		return <Dropdown
+			key={ props.key }
 			className="yoast-block-date-picker-container"
 			position="bottom center"
 			renderToggle={ renderToggle }

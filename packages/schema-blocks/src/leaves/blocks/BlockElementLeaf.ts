@@ -83,7 +83,8 @@ export default class BlockElementLeaf extends BlockLeaf {
 		}
 
 		attributes.key = i;
-
-		return createElement( this.tag, attributes, this.children && this.children.map( ( child, index ) => child.edit( props, index ) ) );
+		return createElement( this.tag, attributes, this.children && this.children.map(
+			( child, index ) => child.edit( { key: index, ...props }, index ) ),
+		);
 	}
 }

@@ -79,15 +79,13 @@ export class Heading extends RichTextBase {
 			props.setAttributes( { [ this.options.name + "_level" ]: newLevel } );
 		}, [ headingLevel ] );
 
-		const headingControl = <BlockControls>
-			<HeadingLevelDropdown
-				selectedLevel={ headingLevel }
-				onChange={ onHeadingLevelChange }
-			/>
-		</BlockControls>;
-
-		return <Fragment>
-			{ headingControl }
+		return <Fragment key={ props.key }>
+			<BlockControls>
+				<HeadingLevelDropdown
+					selectedLevel={ headingLevel }
+					onChange={ onHeadingLevelChange }
+				/>
+			</BlockControls>
 			<WordPressRichText { ...attributes } />
 		</Fragment>;
 	}

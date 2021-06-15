@@ -55,7 +55,10 @@ export default class Duration extends BlockInstruction {
 		);
 
 		return (
-			<div className="yoast-schema-flex yoast-schema-duration">
+			<div
+				key={ props.key }
+				className="yoast-schema-flex yoast-schema-duration"
+			>
 				<TextControl
 					type="number"
 					placeholder="#"
